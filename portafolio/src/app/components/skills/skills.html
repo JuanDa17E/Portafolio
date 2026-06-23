@@ -1,0 +1,25 @@
+<section id="skills">
+  <div class="container">
+    <span class="section-label" appScrollReveal>{{ txt.label }}</span>
+    <h2 appScrollReveal [revealDelay]="100">{{ txt.title }}</h2>
+
+    <div class="categories-grid">
+      <div class="category-card"
+           *ngFor="let cat of txt.categories; let i = index"
+           appScrollReveal [revealDelay]="i * 100">
+
+        <h3 class="cat-title">{{ cat.name }}</h3>
+
+        <div class="skill-item" *ngFor="let skill of cat.items">
+          <div class="skill-header">
+            <span class="skill-name">{{ skill.name }}</span>
+          </div>
+          <div class="skill-track">
+            <div class="skill-fill" [style.width.%]="100"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

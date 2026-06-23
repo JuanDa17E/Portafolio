@@ -1,0 +1,50 @@
+<section id="contacto" class="contact-section">
+  <div class="container">
+
+    <span class="section-label" appScrollReveal>{{ txt.label }}</span>
+    <h2 appScrollReveal [revealDelay]="100">{{ txt.title }}</h2>
+    <p class="desc" appScrollReveal [revealDelay]="200">{{ txt.desc }}</p>
+
+    <div class="contact-grid">
+
+      <div class="contact-links" appScrollReveal [revealDelay]="300">
+        <a class="contact-row" [href]="'mailto:' + txt.email">
+          <div class="c-icon">✉️</div>
+          <div>
+            <p class="c-main">{{ txt.email }}</p>
+            <p class="c-sub">Email</p>
+          </div>
+        </a>
+        <a class="contact-row" [href]="'https://' + txt.linkedin" target="_blank" rel="noopener">
+          <div class="c-icon">💼</div>
+          <div>
+            <p class="c-main">{{ txt.linkedin }}</p>
+            <p class="c-sub">LinkedIn</p>
+          </div>
+        </a>
+        <a class="contact-row" [href]="'https://' + txt.github" target="_blank" rel="noopener">
+          <div class="c-icon">🐙</div>
+          <div>
+            <p class="c-main">{{ txt.github }}</p>
+            <p class="c-sub">GitHub</p>
+          </div>
+        </a>
+        <div class="contact-row no-link">
+          <div class="c-icon">📍</div>
+          <div>
+            <p class="c-main">{{ txt.location }}</p>
+            <p class="c-sub">Ubicación</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-box" appScrollReveal [revealDelay]="400">
+        <p class="cta-text">¿Listo para trabajar juntos?</p>
+        <button class="btn-primary" (click)="copyEmail()">
+          Enviar mensaje
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>

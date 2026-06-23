@@ -1,0 +1,63 @@
+<section id="sobre-mi">
+  <div class="container">
+    <div class="grid">
+
+      <!-- BIO -->
+      <div class="bio-col">
+        <span class="section-label" appScrollReveal>{{ txt.label }}</span>
+        <h2 appScrollReveal [revealDelay]="100">{{ txt.title }}</h2>
+        <p appScrollReveal [revealDelay]="200">{{ txt.bio }}</p>
+
+        <div class="edu-card" appScrollReveal [revealDelay]="300">
+          <span class="edu-icon">🎓</span>
+          <div>
+            <p class="edu-degree">{{ txt.education[0].education }}</p>
+            <p class="edu-year">{{ txt.education[0].year }}</p>
+          </div>
+        </div>
+
+        <div class="edu-card" appScrollReveal [revealDelay]="300">
+          <span class="edu-icon">🎓</span>
+          <div>
+            <p class="edu-degree">{{ txt.education[1].education }}</p>
+            <p class="edu-year">{{ txt.education[1].year }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIMELINE -->
+      <div class="timeline-col">
+        <span class="section-label" appScrollReveal>Experiencia</span>
+        <div class="timeline">
+          <div class="tl-item" *ngFor="let exp of txt.experience; let last = last" appScrollReveal [revealDelay]="150">
+            <div class="tl-line">
+              <div class="tl-dot"></div>
+              <div class="tl-connector" *ngIf="!last"></div>
+            </div>
+            <div class="tl-content">
+              <span class="tl-year">{{ exp.year }}</span>
+              <p class="tl-role">{{ exp.role }}</p>
+              <p class="tl-stack">{{ exp.stack }}</p>
+              <p class="tl-desc">{{ exp.desc }}</p>
+              <p class="tl-role">{{ exp.archievements }}</p>
+              <div class="achievement-list">
+                <div class="achievement-item" *ngFor="let achievement of exp.descArchievements">
+
+                  <span class="achievement-icon">
+                    ✓
+                  </span>
+
+                  <span class="achievement-text">
+                    {{ achievement.title }}
+                  </span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

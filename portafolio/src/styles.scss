@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ─── TOKENS ─────────────────────────────────────────── */
+:root[data-theme='dark'] {
+  --bg:            #060E1D;
+  --surface:       #0B1A2E;
+  --surface-2:     #0F2236;
+  --border:        #1E3A5F;
+  --accent:        #38BDF8;
+  --accent-hover:  #7DD3FC;
+  --accent-dim:    rgba(56, 189, 248, 0.1);
+  --accent-border: rgba(56, 189, 248, 0.2);
+  --text-primary:  #E8F4FD;
+  --text-secondary:#64A4C4;
+  --text-muted:    #7B9EB8;
+  --chip-bg:       rgba(56, 189, 248, 0.1);
+  --chip-text:     #38BDF8;
+  --btn-text:      #060E1D;
+  --shadow:        0 4px 24px rgba(0,0,0,0.4);
+}
+
+:root[data-theme='light'] {
+  --bg:            #F0F7FF;
+  --surface:       #FFFFFF;
+  --surface-2:     #E8F5FF;
+  --border:        #DAEEFF;
+  --accent:        #0077CC;
+  --accent-hover:  #005FA3;
+  --accent-dim:    rgba(0, 119, 204, 0.08);
+  --accent-border: rgba(0, 119, 204, 0.2);
+  --text-primary:  #0A2540;
+  --text-secondary:#3A7CA5;
+  --text-muted:    #5A8BA8;
+  --chip-bg:       rgba(0, 119, 204, 0.08);
+  --chip-text:     #0077CC;
+  --btn-text:      #FFFFFF;
+  --shadow:        0 4px 24px rgba(0,77,153,0.1);
+}
+
+/* ─── RESET ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+}
+
+/* ─── TIPOGRAFÍA ─────────────────────────────────────── */
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.05; }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem);  font-weight: 700; }
+h3 { font-size: 1.1rem; font-weight: 600; }
+p  { font-size: 0.95rem; line-height: 1.7; color: var(--text-muted); }
+a  { text-decoration: none; color: inherit; }
+
+/* ─── LAYOUT ─────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+section { padding: 5rem 0; }
+
+/* ─── BOTONES ────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: var(--btn-text);
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+
+  &:hover  { background: var(--accent-hover); }
+  &:active { transform: scale(0.97); }
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+
+  &:hover  { background: var(--accent-dim); }
+  &:active { transform: scale(0.97); }
+}
+
+/* ─── CHIPS ──────────────────────────────────────────── */
+.chip {
+  display: inline-block;
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+}
+
+/* ─── SECTION LABEL ──────────────────────────────────── */
+.section-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* ─── SCROLL REVEAL ──────────────────────────────────── */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  section { padding: 3.5rem 0; }
+  .container { padding: 0 1.25rem; }
+}
+
+@media (max-width: 480px) {
+  section { padding: 2.5rem 0; }
+}
+
+/* ─── REDUCED MOTION ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}/* You can add global styles to this file, and also import other style files */

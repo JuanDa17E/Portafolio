@@ -1,0 +1,31 @@
+<section id="inicio" class="hero-section">
+  <div class="container">
+
+    <div appScrollReveal [revealDelay]="0" class="badge">
+      <span class="badge-dot"></span>
+      {{ txt.badge }}
+    </div>
+
+    <h1 appScrollReveal [revealDelay]="100">
+      {{ txt.greeting }}<br>
+      <span class="accent">{{ txt.name }}</span>
+    </h1>
+
+    <p class="role" appScrollReveal [revealDelay]="200">{{ txt.role }}</p>
+    <p class="desc" appScrollReveal [revealDelay]="300">{{ txt.desc }}</p>
+
+
+    <div class="hero-btns" appScrollReveal [revealDelay]="400">
+      <a class="btn-primary" href="#proyectos">{{ txt.btnMain }}</a>
+      <a class="btn-outline" href="assets\docs\H-V JUAN DAVID AGUDELO RESTREPO HV.pdf" download>{{ txt.btnSec }}</a>
+    </div>
+
+    <div class="stats" appScrollReveal [revealDelay]="500">
+      <div class="stat" *ngFor="let s of txt.stats">
+        <span class="stat-value">{{ s.value }}</span>
+        <span class="stat-label">{{ s.label }}</span>
+      </div>
+    </div>
+
+  </div>
+</section>

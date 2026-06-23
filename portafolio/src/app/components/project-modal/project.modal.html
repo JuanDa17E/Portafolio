@@ -1,0 +1,64 @@
+<div class="modal-backdrop" (click)="onBackdropClick($event)">
+  <div class="modal-box" translate="no">
+
+    <button class="close-btn" (click)="close.emit()" aria-label="Cerrar">✕</button>
+
+    <!-- GALERÍA -->
+    <div class="gallery" *ngIf="project.gallery && project.gallery.length">
+      <div class="gallery-img">
+        <img
+          *ngIf="project.gallery[activeIndex].img"
+          [src]="project.gallery[activeIndex].img"
+          [alt]="project.gallery[activeIndex].title"
+          (click)="toggleExpand($event)"
+          class="gallery-image"
+        />
+        <div *ngIf="!project.gallery[activeIndex].img" class="img-placeholder">
+          [ captura ]
+        </div>
+
+        <button class="nav-btn left" (click)="prevImg()" *ngIf="project.gallery.length > 1" aria-label="Anterior">‹</button>
+        <button class="nav-btn right" (click)="nextImg()" *ngIf="project.gallery.length > 1" aria-label="Siguiente">›</button>
+      </div>
+
+      <h3 class="gallery-title" translate="no">{{ project.gallery[activeIndex].title }}</h3>
+      <p class="gallery-caption" translate="no">{{ project.gallery[activeIndex].description }}</p>
+
+      <div class="dots" *ngIf="project.gallery.length > 1">
+        <span *ngFor="let g of project.gallery; let i = index"
+              class="dot" [class.active]="i === activeIndex"
+              (click)="activeIndex = i"></span>
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <div class="modal-info" translate="no">
+      <h2>{{ project.name }}</h2>
+      <p class="modal-desc">{{ project.desc }}</p>
+
+      <div class="chips-row">
+        <span class="chip" *ngFor="let t of project.stack">{{ t }}</span>
+      </div>
+
+      <p class="modal-details">{{ project.details }}</p>
+
+      <div class="modal-actions">
+        <a class="btn-outline" [href]="project.code" target="_blank" rel="noopener">
+          Ver código
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="image-overlay" *ngIf="isExpanded" (click)="closeExpanded()">
+  <div class="image-overlay-panel" (click)="$event.stopPropagation()">
+    <button class="image-overlay-close" (click)="closeExpanded()" aria-label="Cerrar imagen">✕</button>
+    <img
+      [src]="project.gallery[activeIndex].img"
+      [alt]="project.gallery[activeIndex].title"
+      class="image-overlay-img"
+    />
+  </div>
+</div>

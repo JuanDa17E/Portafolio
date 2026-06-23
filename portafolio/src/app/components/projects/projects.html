@@ -1,0 +1,45 @@
+<section id="proyectos" class="projects-section">
+  <div class="container">
+    <span class="section-label" appScrollReveal>{{ txt.label }}</span>
+    <h2 appScrollReveal [revealDelay]="100">{{ txt.title }}</h2>
+
+    <div class="projects-grid">
+      <div class="project-card"
+           *ngFor="let p of txt.list; let i = index"
+           appScrollReveal [revealDelay]="i * 120">
+
+        <div class="card-thumb">
+          <img *ngIf="p.thumb" [src]="p.thumb" [alt]="p.name" loading="lazy" />
+          <div *ngIf="!p.thumb" class="thumb-placeholder">
+            <span>{{ p.name.split('·')[0].trim() }}</span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <h3>{{ p.name }}</h3>
+          <p>{{ p.desc }}</p>
+
+          <div class="chips-row">
+            <span class="chip" *ngFor="let t of p.stack">{{ t }}</span>
+          </div>
+
+          <div class="card-actions">
+            <button class="btn-primary" (click)="openModal(p)">
+              Ver detalles
+            </button>
+            <a class="btn-outline" [href]="p.code" target="_blank" rel="noopener">
+              Código
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <app-project-modal
+    *ngIf="selectedProject"
+    [project]="selectedProject"
+    (close)="closeModal()">
+  </app-project-modal>
+</section>
